@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Display Property Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      margin-bottom: 20px;
+    }
+
+    /* Block element */
+    .block-element {
+      display: block;
+      width: 100%;
+      border: 2px solid #333;
+      background-color: #f9c74f;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* Inline element */
+    .inline-element {
+      display: inline;
+      background-color: #90be6d;
+      color: #fff;
+      padding: 5px;
+      border: 1px solid #2a9d8f;
+      margin: 5px;
+    }
+
+    /* Inline-block element */
+    .inline-block-element {
+      display: inline-block;
+      width: 120px;
+      height: 50px;
+      background-color: #577590;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    /* Hidden element */
+    .hidden-element {
+      display: none;
+      background-color: #f94144;
+      color: white;
+      padding: 10px;
+      margin-top: 10px;
+      border: 2px dashed #900;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CSS Display Property Demonstration</h2>
+  <p>This page demonstrates how different CSS <code>display</code> properties affect layout.</p>
+
+  <div class="container">
+    <div class="block-element">Block Element: occupies full width.</div>
+
+    <span class="inline-element">Inline Element</span>
+    <span class="inline-element">More Inline</span>
+
+    <div class="inline-block-element">Inline-Block</div>
+    <div class="inline-block-element">Box 2</div>
+
+    <div id="toggleBox" class="hidden-element">Hidden Element (display: none)</div>
+    <button onclick="toggleVisibility()">Toggle Hidden Element</button>
+  </div>
+
+  <script>
+    function toggleVisibility() {
+      const element = document.getElementById("toggleBox");
+      element.style.display = (element.style.display === "none" || element.style.display === "") 
+        ? "block" 
+        : "none";
+    }
+  </script>
+
+</body>
+</html>

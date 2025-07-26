@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sticky Header & Fixed Footer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background-color: #2a9d8f;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #264653;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    main {
+      padding: 20px;
+      margin-bottom: 60px; /* space for footer */
+    }
+
+    .content {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .content p {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Sticky Header</h2>
+  </header>
+
+  <main>
+    <div class="content">
+      <h3>Scrollable Content</h3>
+      <!-- Dummy content to enable scrolling -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec est at dolor placerat accumsan. Cras fermentum.</p>
+      <p>Aliquam erat volutpat. Suspendisse potenti. Integer lacinia malesuada justo, nec luctus massa feugiat et.</p>
+      <p>Vestibulum vitae turpis sed nisl vehicula cursus. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus.</p>
+      <p>Morbi ac bibendum nulla. Curabitur nec fermentum nisl. Aenean commodo lorem et nisi rhoncus porttitor.</p>
+      <p>Sed vulputate augue vitae sapien lacinia tincidunt. Mauris hendrerit nulla eget turpis malesuada suscipit.</p>
+      <p>Proin ac varius sem, a viverra nisi. Praesent ac leo laoreet, vestibulum lorem sit amet, porttitor lacus.</p>
+      <p>Donec eu feugiat augue. Curabitur sit amet tincidunt magna. Vestibulum convallis purus sit amet libero fermentum suscipit.</p>
+      <p>Maecenas finibus felis non sem fermentum tincidunt. Phasellus at mauris ut justo cursus lobortis vel et neque.</p>
+      <p>Duis scelerisque turpis ut risus eleifend, a lacinia orci posuere. Nullam fermentum ante eu efficitur laoreet.</p>
+      <p>Nam pretium leo a nisi gravida, ut efficitur odio tincidunt. Morbi vestibulum libero at risus dapibus congue.</p>
+    </div>
+  </main>
+
+  <footer>
+    Fixed Footer &copy; 2025
+  </footer>
+
+</body>
+</html>

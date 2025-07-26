@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS Box Model Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+
+    .box {
+      color: #333;
+      font-size: 16px;
+    }
+
+    .box1 {
+      width: 200px;
+      background-color: #ffd700;
+      padding: 20px;
+      border: 5px solid #ff8c00;
+      margin: 15px;
+      box-sizing: content-box;
+    }
+
+    .box2 {
+      width: 200px;
+      background-color: #87ceeb;
+      padding: 30px;
+      border: 10px dashed #4682b4;
+      margin: 25px;
+      box-sizing: border-box;
+    }
+
+    .box3 {
+      width: 250px;
+      background-color: #98fb98;
+      padding: 10px 15px;
+      border: 3px dotted #006400;
+      margin: 10px 30px;
+      /* Default box-sizing (content-box) is used here */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CSS Box Model Demonstration</h2>
+
+  <div class="box box1">
+    <strong>Box 1 (content-box):</strong> This box uses <code>box-sizing: content-box</code>. The width does not include padding or border.
+  </div>
+
+  <div class="box box2">
+    <strong>Box 2 (border-box):</strong> This box uses <code>box-sizing: border-box</code>. The width includes padding and border.
+  </div>
+
+  <div class="box box3">
+    <strong>Box 3 (default):</strong> This box uses the default box-sizing (content-box) but has different values for margin and padding.
+  </div>
+
+</body>
+</html>
