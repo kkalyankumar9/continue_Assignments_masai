@@ -1,7 +1,27 @@
 
-let person = { name: "John" };
-function greet() {
-    console.log("Hello, " + this.name);
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = Math.random() > 0.5;
+      if (success) {
+        resolve("Fetched data successfully!");
+      } else {
+        reject("Network error or server failed");
+      }
+    }, 1000); 
+  });
 }
-let greetPerson = greet.bind(person);
-greetPerson();
+
+
+async function fetchDataHandler() {
+  try {
+    const result = await fetchData();
+    console.log(result);
+  } catch (error) {
+    console.log("Error fetching data:", error);
+  }
+}
+
+
+fetchDataHandler();
+
