@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic List Example</title>
+  <style>
+    .bold-blue {
+      font-weight: bold;
+      color: blue;
+    }
+
+    .italic-red {
+      font-style: italic;
+      color: red;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <ul id="item-list">
+    <li class="bold-blue">Item 1</li>
+    <li class="italic-red">Item 2</li>
+    <li class="bold-blue">Item 3</li>
+  </ul>
+
+  <button id="add-btn">Add Item</button>
+
+  <script>
+    const ul = document.querySelector('#item-list');
+    const button = document.querySelector('#add-btn');
+
+    button.addEventListener('click', () => {
+      const newItem = document.createElement('li');
+
+      // Calculate next item number based on current count
+      const nextIndex = ul.children.length + 1;
+      newItem.textContent = `Item ${nextIndex}`;
+
+      // Apply style based on sequence number (odd/even)
+      if (nextIndex % 2 === 1) {
+        newItem.classList.add('bold-blue');
+      } else {
+        newItem.classList.add('italic-red');
+      }
+
+      ul.appendChild(newItem);
+    });
+  </script>
+
+</body>
+</html>
