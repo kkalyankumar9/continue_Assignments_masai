@@ -6,6 +6,11 @@ const allBooksRouter = require("./routes/allBooks");
 const { myBooksRouter } = require("./routes/myBooksRouter");
 require("dotenv").config();
 
+ const cors = require("cors");
+app.use(cors({
+    origin: "https://my-books-project.onrender.com",
+    credentials: true, 
+}));
 
 
 const app= express();
