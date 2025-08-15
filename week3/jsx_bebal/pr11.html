@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Imperative vs Declarative Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .box {
+            border: 2px solid #ccc;
+            padding: 15px;
+            width: 45%;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        p {
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Imperative Example -->
+    <div class="box">
+        <h2>Imperative (Vanilla JS)</h2>
+        <div id="imperative-root"></div>
+    </div>
+
+    <!-- Declarative Example -->
+    <div class="box">
+        <h2>Declarative (React)</h2>
+        <div id="declarative-root"></div>
+    </div>
+
+    <!-- Imperative JavaScript -->
+    <script>
+        const paragraph = document.createElement("p");
+        paragraph.textContent = "Hello, World!";
+        document.getElementById("imperative-root").appendChild(paragraph);
+    </script>
+
+    <!-- Declarative React -->
+    <script type="text/babel">
+        function App() {
+            return <p>Hello, World!</p>;
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("declarative-root"));
+        root.render(<App />);
+    </script>
+</body>
+</html>
