@@ -7,13 +7,11 @@ const { myBooksRouter } = require("./routes/myBooksRouter");
 require("dotenv").config();
 
  const cors = require("cors");
-app.use(cors({
-    origin: "https://my-books-project.onrender.com",
-    credentials: true, 
-}));
+
 
 
 const app= express();
+app.use(cors())
 app.use(express.json());
 app.use(cookieParser());// <-- THIS is required to read cookies from req.cookies
 
