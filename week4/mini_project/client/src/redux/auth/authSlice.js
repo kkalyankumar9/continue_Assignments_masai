@@ -5,11 +5,7 @@ import axios from "axios";
 // Axios default config: send cookies automatically
 axios.defaults.withCredentials = true;
 
-// ===========================
-// Async Thunks
-// ===========================
 
-// Register a new user
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ email, password }, { rejectWithValue }) => {
@@ -47,7 +43,8 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(
-        "https://my-books-project.onrender.com/api/auth/logout"
+        "https://my-books-project.onrender.com/api/auth/logout",
+        { withCredentials: true } // 👈 send cookies
       );
       return data; // { msg: "Logout successful" }
     } catch (err) {
@@ -55,6 +52,7 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+
 
 // Fetch current user (based on token in cookie)
 export const fetchCurrentUser = createAsyncThunk(
@@ -150,8 +148,6 @@ const authSlice = createSlice({
   }
 });
 
-// ===========================
-// Exports
-// ===========================
+
 export const { clearAuthState } = authSlice.actions;
 export default authSlice.reducer;

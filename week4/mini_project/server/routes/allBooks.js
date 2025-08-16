@@ -1,11 +1,11 @@
 const express = require("express");
 const axios = require("axios");
-const authMiddleware = require("../middleWare");
+
 const { BooksModel } = require("../model/books");
 
 const allBooksRouter = express.Router();
 
-allBooksRouter.get("/books", authMiddleware, async (req, res) => {
+allBooksRouter.get("/books", async (req, res) => {
   try {
     // Fetch 20 books by Indian authors from Open Library
     const apiRes = await axios.get(

@@ -1,15 +1,29 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { FiMenu, FiX } from "react-icons/fi";
+import { logoutUser } from "../redux/auth/authSlice";
+
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  // Check if user is logged in
+  const user = useSelector((state) => state.auth.user);
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "#" },
-
     { name: "Contact", href: "#" },
-        { name: "Login", href: "/login" },
+    // 👇 if logged in show logout, else login
+    user
+      ? { name: "Logout", href: "#", onClick: handleLogout }
+      : { name: "Login", href: "/login" },
   ];
 
   return (
@@ -23,15 +37,25 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-gray-700 hover:text-blue-600 transition duration-200"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.onClick ? (
+                <button
+                  key={link.name}
+                  onClick={link.onClick}
+                  className="text-gray-700 hover:text-blue-600 transition duration-200"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-gray-700 hover:text-blue-600 transition duration-200"
+                >
+                  {link.name}
+                </a>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -50,16 +74,29 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-4 py-3 space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block text-gray-700 hover:text-blue-600 transition duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.onClick ? (
+                <button
+                  key={link.name}
+                  onClick={() => {
+                    link.onClick();
+                    setIsOpen(false);
+                  }}
+                  className="block text-left w-full text-gray-700 hover:text-blue-600 transition duration-200"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block text-gray-700 hover:text-blue-600 transition duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              )
+            )}
           </div>
         </div>
       )}
