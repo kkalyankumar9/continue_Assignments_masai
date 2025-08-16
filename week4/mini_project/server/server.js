@@ -3,10 +3,11 @@ const { connection } = require("./db");
 const { authRouter } = require("./routes/authRoute");
 const cookieParser = require("cookie-parser");
 const allBooksRouter = require("./routes/allBooks");
+const cors = require('cors')
 const { myBooksRouter } = require("./routes/myBooksRouter");
 require("dotenv").config();
 
- const cors = require("cors");
+
 
 
 
@@ -14,14 +15,8 @@ const app= express();
 
 app.use(express.json());
 app.use(cookieParser());// <-- THIS is required to read cookies from req.cookies
-const cors = require("cors");
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "https://my-books-project.onrender.com"], // frontend URLs
-    credentials: true, // allow cookies, authorization headers
-  })
-);
+app.use(cors());
 
 app.get("/", (req, res) => {
     res.send("Welcome to the Mini Project Server");
