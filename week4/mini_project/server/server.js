@@ -15,10 +15,11 @@ app.use(cookieParser());
 // ✅ Configure CORS properly
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://your-frontend-domain.com"], // frontend(s)
+    origin: ["http://localhost:5175"], // match your frontend dev port
     credentials: true, // allow cookies
   })
 );
+
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Mini Project Server");
