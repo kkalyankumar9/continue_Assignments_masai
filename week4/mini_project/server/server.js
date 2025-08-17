@@ -10,10 +10,15 @@ require("dotenv").config();
 const app = express();
 
 app.use(express.json());
-app.use(cookieParser()); // <-- required to read cookies
+app.use(cookieParser());
 
-
-app.use(cors());
+// ✅ Configure CORS properly
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://your-frontend-domain.com"], // frontend(s)
+    credentials: true, // allow cookies
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Mini Project Server");
