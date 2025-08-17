@@ -12,18 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser()); // <-- required to read cookies
 
-// ✅ CORS setup
-const allowedOrigins = [
-  "http://localhost:5173", // React dev
-  "https://my-books-project.onrender.com" // (if frontend deployed here)
-];
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true, // allow cookies & auth headers
-  })
-);
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Mini Project Server");

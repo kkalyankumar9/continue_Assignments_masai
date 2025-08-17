@@ -7,6 +7,7 @@ import axios from "axios";
 const Books = () => {
   const dispatch = useDispatch();
   const { books, loading, error } = useSelector((state) => state.books);
+  console.log("Books from Redux:", books);
 
   useEffect(() => {
     dispatch(fetchBooks());
