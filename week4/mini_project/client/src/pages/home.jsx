@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import { useSelector } from 'react-redux';
+import Books from '../components/allBooks';
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
   return (
     <div>
 <Navbar/>
+<Books/>
 
 <Footer/>
     </div>

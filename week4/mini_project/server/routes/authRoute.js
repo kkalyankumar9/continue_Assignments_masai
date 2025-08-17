@@ -55,7 +55,7 @@ authRouter.post("/login", async (req, res) => {
     });
 
     // Send success response
-    res.status(200).json({ msg: "Login successful", user: payload });
+    res.status(200).json({ msg: "Login successful", user: payload,token:token });
 
   } catch (error) {
     console.error(error);
