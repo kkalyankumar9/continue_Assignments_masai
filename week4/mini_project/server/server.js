@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",              // local dev
-       // your React deployed frontend
+      "https://ornate-douhua-37a6be.netlify.app/"
     ],
     credentials: true,
   })
