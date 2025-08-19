@@ -4,6 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRouter = ({ children }) => {
   const user = useSelector((store) => store.auth.user); // check user instead of token
+  console.log("User from PrivateRouter:", user);
   const location = useLocation();
 
   return user ? (

@@ -46,7 +46,9 @@ export const logoutUser = createAsyncThunk(
         "https://my-books-project.onrender.com/api/auth/logout",
         { withCredentials: true } // 👈 send cookies
       );
+      
       return data; // { msg: "Logged out successfully" }
+   
     } catch (err) {
       return rejectWithValue(err.response?.data?.msg || "Logout failed");
     }
