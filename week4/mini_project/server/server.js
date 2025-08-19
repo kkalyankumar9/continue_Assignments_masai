@@ -13,12 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // ✅ Configure CORS properly
-app.use(
-  cors({
-    origin: ["http://localhost:5175"], // match your frontend dev port
-    credentials: true, // allow cookies
-  })
-);
+app.use(cors());
 
 
 app.get("/", (req, res) => {
