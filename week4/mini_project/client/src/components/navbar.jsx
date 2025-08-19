@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FiMenu, FiX } from "react-icons/fi";
-import { clearAuthState } from "../redux/auth/authSlice";
-import axios from "axios";
+import {  logoutUser } from "../redux/auth/authSlice";
 
 
 
@@ -14,20 +13,20 @@ const Navbar = () => {
   const user = useSelector((state) => state.auth.user);
 
   const handleLogout =async () => {
-    // dispatch(logoutUser());
-    try {
-      const { data } = await axios.get(
-        "https://my-books-project.onrender.com/api/auth/logout",
-        { withCredentials: true }
-      );
-      console.log(data.msg); // "Logged out successfully"
+    dispatch(logoutUser());
+    // try {
+    //   const { data } = await axios.get(
+    //     "https://my-books-project.onrender.com/api/auth/logout",
+    //     { withCredentials: true }
+    //   );
+    //   console.log(data.msg); // "Logged out successfully"
 
-      // Clear Redux auth state
-     dispatch(clearAuthState());
+    //   // Clear Redux auth state
+    //  dispatch(clearAuthState());
 
-    } catch (err) {
-      console.error("Logout failed:", err.response?.data?.msg || err.message);
-    }
+    // } catch (err) {
+    //   console.error("Logout failed:", err.response?.data?.msg || err.message);
+    // }
   };
 
   const navLinks = [

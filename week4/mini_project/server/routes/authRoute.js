@@ -47,12 +47,12 @@ authRouter.post("/login", async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" });
 
     // Set HTTP-only cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
+res.cookie("token", token, {
+  httpOnly: true,
+  secure: true, // required on HTTPS
+  sameSite: "none", // ⚠️ required for cross-origin (frontend <> backend different domains)
+});
+
 
     // Send success response
     res.status(200).json({ msg: "Login successful", user: payload,token:token });
