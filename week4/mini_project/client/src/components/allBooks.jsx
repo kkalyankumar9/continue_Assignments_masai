@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "../redux/books/allBooksSlice";
 import axios from "axios";
+import { useState } from "react";
 
 const Books = () => {
   const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const Books = () => {
     (state) => state.books
   );
   const observer = useRef();
-
+const [addedBooks, setAddedBooks] = useState([]);
   // Load more books when last element is visible
   const lastBookRef = useCallback(
     (node) => {
@@ -31,13 +32,14 @@ const Books = () => {
 
   const handleAddBook = async (bookId) => {
     try {
-      const res = await axios.post(
+        const res = await axios.post(
         `https://my-books-project.onrender.com/api/mybooks/${bookId}`,
         {},
         { withCredentials: true }
       );
-      alert("Book added to your list ✅");
-      console.log(res.data);
+
+      setAddedBooks((prev) => [...prev, bookId]); // mark as added
+      console.log("✅ Added:", res.data);
     } catch (err) {
       alert(err.response?.data?.error || "Failed to add book ❌");
     }
@@ -112,7 +114,7 @@ const Books = () => {
               </p>
               <button
                 onClick={() => handleAddBook(book._id)}
-                className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                className="mt-3 px-4 py-2 bg-blue-500  rounded-lg hover:bg-blue-600"
               >
                 Add book
               </button>

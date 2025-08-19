@@ -1,38 +1,31 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FiMenu, FiX } from "react-icons/fi";
-import {  logoutUser } from "../redux/auth/authSlice";
+import {   logoutUser } from "../redux/auth/authSlice";
 
+import { useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   // Check if user is logged in
   const user = useSelector((state) => state.auth.user);
 
-  const handleLogout =async () => {
-    dispatch(logoutUser());
-    // try {
-    //   const { data } = await axios.get(
-    //     "https://my-books-project.onrender.com/api/auth/logout",
-    //     { withCredentials: true }
-    //   );
-    //   console.log(data.msg); // "Logged out successfully"
-
-    //   // Clear Redux auth state
-    //  dispatch(clearAuthState());
-
-    // } catch (err) {
-    //   console.error("Logout failed:", err.response?.data?.msg || err.message);
-    // }
-  };
+const handleLogout = async () => {
+  try {
+    await dispatch(logoutUser()).unwrap(); // unwrap() to handle success/failure
+    navigate("/login");
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "My Books", href: "/my_books" },
     // 👇 if logged in show logout, else login
     user
       ? { name: "Logout", href: "#", onClick: handleLogout }
