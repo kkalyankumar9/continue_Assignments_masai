@@ -72,8 +72,7 @@ authRouter.get("/logout", async (req, res) => {
     if (!token) {
       return res.status(400).json({ msg: "No token found" });
     }
-
-    const decoded = jwt.decode(token);
+const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (!decoded || !decoded.exp) {
       return res.status(400).json({ msg: "Invalid token format" });
     }
