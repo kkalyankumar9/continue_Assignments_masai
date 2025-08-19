@@ -17,12 +17,14 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",              // local dev
-      "https://ornate-douhua-37a6be.netlify.app/"
+      "http://localhost:5173", 
+      "https://ornate-douhua-37a6be.netlify.app"
     ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
 );
+
 
 
 
